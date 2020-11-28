@@ -14,14 +14,14 @@ package com.linksong.leetcode.tree;
  *
  *  解：对二叉树进行中序遍历即为一个升序的序列
  *
- *  设nn为二叉搜索树中节点的个数。
+ *  设n为二叉搜索树中节点的个数。
  *  中序遍历所有节点仅访问一次，所以时间复杂度为O(n).
  *  递归使用辅助栈空间O(n)，几个临时变量O(1)，因此总的空间复杂度为O(n).
  *
  * */
 public class ConvertBiNode {
-    TreeNode head = new TreeNode(-1);   //为了返回单向链表的头节点多设的一个节点
-    TreeNode perv = null; //指向当前节点的前一个节点
+    private TreeNode head = new TreeNode(-1);   //为了返回单向链表的头节点多设的一个节点
+    private TreeNode perv = null; //指向当前节点的前一个节点
 
 
     public TreeNode convertBiNode(TreeNode root) {
@@ -36,8 +36,8 @@ public class ConvertBiNode {
         }
         recursiveMethod(treeNode.left);
         if (perv == null) {
-            perv = treeNode;
-            head.right = treeNode;
+            perv = treeNode;//第一个节点
+            head.right = treeNode;//记录第一个节点
         } else {
             perv.right = treeNode;  //前一个节点的右指针指向当前节点
             perv = treeNode;        //更新perv指向
@@ -46,7 +46,4 @@ public class ConvertBiNode {
         recursiveMethod(treeNode.right);
     }
 
-    public static void main(String[] args) {
-        TreeNode treeNode = new TreeNode(4);
-    }
 }
