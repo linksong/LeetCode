@@ -11,6 +11,12 @@ package com.linksong.leetcode.tree;
  *
  * 来源：力扣（LeetCode）98
  *
+ *
+ * 给定一个二叉树，判断它是否是高度平衡的二叉树。
+ *
+ * 本题中，一棵高度平衡二叉树定义为：
+ *
+ * 来源：力扣（LeetCode）110
  * */
 
 public class IsValiddBST {
@@ -57,6 +63,12 @@ public class IsValiddBST {
             isBST = false;
         }
         return isBST;
+    }
+
+
+    public boolean isBalanced(TreeNode root) {
+        return true;
+
     }
 
 
