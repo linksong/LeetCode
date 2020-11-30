@@ -24,17 +24,17 @@ public class IsValiddBST {
     TreeNode pre;
 
     public boolean isValidBST(TreeNode root) {
-        if (root == null){
+        if (root == null) {
             return true;
         }
-        if (!isValidBST(root.left)){
+        if (!isValidBST(root.left)) {
             return false;
         }
-        if (pre != null && pre.val >= root.val){
+        if (pre != null && pre.val >= root.val) {
             return false;
         }
         pre = root;
-        if (!isValidBST(root.right)){
+        if (!isValidBST(root.right)) {
             return false;
         }
         return true;
@@ -44,34 +44,43 @@ public class IsValiddBST {
     //错误的解法
 
     /*
-    * 陷阱1.所有的左子树都要比右子树小
-    *
-    * 陷阱2.边界情况，可能会比int的最小值小
-    *
-    *
-    * */
+     * 陷阱1.所有的左子树都要比右子树小
+     *
+     * 陷阱2.边界情况，可能会比int的最小值小
+     *
+     *
+     * */
     private boolean isBST(TreeNode treeNode) {
         boolean isBST = false;
         if (treeNode == null) {
             isBST = true;
         }
-        if (treeNode.left.val < treeNode.val && treeNode.val < treeNode.right.val){
+        if (treeNode.left.val < treeNode.val && treeNode.val < treeNode.right.val) {
             isBST(treeNode.left);
             isBST(treeNode.right);
             isBST = true;
-        }else {
+        } else {
             isBST = false;
         }
         return isBST;
     }
 
 
-   
+    // 采用了自底向上 时间复杂度为O（n），空间复杂度为O（n）
     public boolean isBalanced(TreeNode root) {
-        return false;
-
+        return getHeight(root) >= 0;
     }
 
-
-
+    private int getHeight(TreeNode node) {
+        if (node == null) {
+            return 0;
+        }
+        int leftHeight = getHeight(node.left);
+        int rightHeight = getHeight(node.right);
+        if (leftHeight == -1 || rightHeight == -1 || Math.abs(rightHeight - leftHeight) > 1) {
+            return -1;
+        } else {
+            return Math.max(rightHeight, leftHeight) + 1;
+        }
+    }
 }
