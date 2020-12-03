@@ -74,4 +74,19 @@ public class EverydayExercises {
         return maxLength;
     }
 
+    /*
+    *
+    * 给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000。
+    *
+    * LeetCode 5
+    *
+    * 动态规划题目，仍需思考、练习
+    * */
+    public String longestPalindrome(String s) {
+        String longPalindrome = null;
+
+
+        return longPalindrome;
+    }
+
 }
