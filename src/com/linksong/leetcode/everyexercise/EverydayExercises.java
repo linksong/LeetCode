@@ -75,18 +75,42 @@ public class EverydayExercises {
     }
 
     /*
-    *
-    * 给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000。
-    *
-    * LeetCode 5
-    *
-    * 动态规划题目，仍需思考、练习
-    * */
+     *
+     * 给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000。
+     *
+     * LeetCode 5
+     *
+     * 动态规划题目，仍需思考、练习
+     * */
     public String longestPalindrome(String s) {
-        String longPalindrome = null;
+        if (s == null) {
+            return "";
+        }
+        int start = 0, end = 0;
+        for (int i = 0; i < s.length(); i++) {
+            int len1 = getlongestPalindrome(s, i, i);
+            int len2 = getlongestPalindrome(s, i, i + 1);
 
+            int len = Math.max(len1, len2);
+            if (len > end - start) {
+                start = i - (len - 1) / 2;
+                end = i + len / 2;
+            }
+        }
 
-        return longPalindrome;
+        return s.substring(start, end + 1);
+    }
+
+    private int getlongestPalindrome(String s, int left, int right) {
+        if (s == null) {
+            return 0;
+        }
+        while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
+            --left;
+            ++right;
+
+        }
+        return right - left - 1;
     }
 
 }
