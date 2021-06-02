@@ -34,7 +34,7 @@ public class Leetcode015 {
                         right--;
                     }
                     while (left < right && nums[left] == nums[left + 1]) {
-                        i++;
+                        left++;
                     }
                     left++;
                     right--;
@@ -48,7 +48,4 @@ public class Leetcode015 {
         return result;
     }
 
-    public static void main(String[] args) {
-        System.out.println(threeSum(new int[]{-1, 0, 1, 2, -1, -4}));
-    }
 }
