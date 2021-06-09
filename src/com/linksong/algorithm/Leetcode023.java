@@ -1,4 +1,4 @@
-package com.linksong.sort;
+package com.linksong.algorithm;
 
 /**
  * @author 1625159399@qq.com
@@ -80,20 +80,5 @@ public class Leetcode023 {
         return listNode.next;
     }
 
-    public class ListNode {
-        int val;
-        ListNode next;
 
-        ListNode() {
-        }
-
-        ListNode(int val) {
-            this.val = val;
-        }
-
-        ListNode(int val, ListNode next) {
-            this.val = val;
-            this.next = next;
-        }
-    }
 }
